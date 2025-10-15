@@ -1,0 +1,242 @@
+/* ===== Modern Navbar Base ===== */
+.modern-navbar {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  position: relative;
+  z-index: 1000;
+  transition: all 0.4s ease;
+}
+
+.modern-navbar.sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  animation: slideDown 0.4s ease;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* ===== Layout ===== */
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 0;
+}
+
+/* ===== Logo ===== */
+.logo img {
+  height: 45px;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.logo img:hover {
+  transform: scale(1.06);
+  filter: brightness(1.1);
+}
+
+/* ===== Menu Links ===== */
+.main-nav ul {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.main-nav ul li {
+  position: relative;
+}
+
+.main-nav ul li a {
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 16px;
+  color: #1c1c1c;
+  padding: 8px 0;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.main-nav ul li a::after {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  left: 50%;
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(90deg, #007bff, #00c6ff);
+  transition: all 0.4s ease;
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+.main-nav ul li a:hover::after {
+  width: 100%;
+}
+
+.main-nav ul li a:hover {
+  color: #007bff;
+}
+
+/* ===== Dropdown ===== */
+.main-nav ul li ul {
+  position: absolute;
+  top: 48px;
+  left: 0;
+  background: #fff;
+  min-width: 220px;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  display: none;
+  flex-direction: column;
+  padding: 10px 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(15px);
+  transition: all 0.35s ease;
+}
+
+.main-nav ul li:hover > ul {
+  display: flex;
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.main-nav ul li ul li a {
+  display: block;
+  padding: 10px 20px;
+  color: #333;
+  font-weight: 400;
+  transition: all 0.3s ease;
+}
+
+.main-nav ul li ul li a:hover {
+  background: #f2f6ff;
+  color: #007bff;
+}
+
+/* ===== Mega Menu ===== */
+.mega-menu-all {
+  position: absolute;
+  top: 48px;
+  left: 0;
+  width: 700px;
+  background: #fff;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  display: none;
+  padding: 25px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all 0.4s ease;
+}
+
+.main-nav ul li:hover .mega-menu-all {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.mega-menu-all h3 {
+  font-size: 15px;
+  margin-bottom: 12px;
+  color: #111;
+  font-weight: 600;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 6px;
+}
+
+.mega-menu-all ul li a {
+  display: block;
+  padding: 6px 0;
+  color: #444;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.mega-menu-all ul li a:hover {
+  color: #007bff;
+  transform: translateX(4px);
+}
+
+/* ===== Contact Button ===== */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.nav-btn {
+  background: linear-gradient(90deg, #007bff, #00c6ff);
+  color: #fff;
+  padding: 10px 22px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.4s ease;
+  box-shadow: 0 0 0 rgba(0, 123, 255, 0);
+}
+
+.nav-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 123, 255, 0.35);
+}
+
+/* ===== Mobile Toggle ===== */
+.mobile-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 22px;
+  color: #222;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.mobile-toggle:hover {
+  color: #007bff;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 991px) {
+  .main-nav {
+    display: none;
+  }
+
+  .nav-btn {
+    display: none;
+  }
+
+  .mobile-toggle {
+    display: block;
+  }
+}
